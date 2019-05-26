@@ -14,7 +14,7 @@ To instantiate a TicTacToe server at your local machine at port 1234 (default), 
     $ go run main.go
     ```
 
-* Build and run the binary:
+* Or build and run the binary:
     
     ```
     $ go build
@@ -23,7 +23,7 @@ To instantiate a TicTacToe server at your local machine at port 1234 (default), 
 
 ## How to Test
 
-Since the inputs and outputs are line-based only, you can test the server responses by using netcat or telnet, e.g:
+Since the inputs and outputs are line-based only, you can test the server responses by using netcat or telnet as a client, e.g:
 
 ```
 $ telnet localhost 1234

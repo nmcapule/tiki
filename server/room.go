@@ -163,7 +163,7 @@ func (r *room) render() string {
 func (r *room) shuffle() {
 	// Randomize turn.
 	r.turn = rand.Int() % 2
-	// Randomize list.
+	// Randomize list to randomize assigned tic tac.
 	rand.Shuffle(len(r.players), func(i, j int) {
 		r.players[i], r.players[j] = r.players[j], r.players[i]
 	})

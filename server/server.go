@@ -148,6 +148,7 @@ func (s *Server) parseAndExecute(p *player, msg string) error {
 				return errRoomNotFound
 			}
 			r.(*room).execute(action{kind: actionQuit, src: p})
+			p.roomID = ""
 		}
 		p.Close()
 	case "!":
