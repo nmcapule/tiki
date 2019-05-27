@@ -26,6 +26,7 @@ type action struct {
 	msg  string
 }
 
+// Encapsulates a single tictactoe room implementation limited for 2 players.
 type room struct {
 	mu      sync.Mutex
 	id      string
@@ -62,11 +63,7 @@ func (r *room) run() error {
 	return nil
 }
 
-func (r *room) feed(act action) error {
-	r.actch <- act
-	return nil
-}
-
+// Single point of entry for executing given room action.
 func (r *room) execute(act action) error {
 	r.mu.Lock()
 	defer r.mu.Unlock()
@@ -148,6 +145,7 @@ func (r *room) execute(act action) error {
 	return nil
 }
 
+// Creates a string rendering of the currrent state of the board.
 func (r *room) render() string {
 	var args []interface{}
 	for _, c := range r.board {
@@ -160,6 +158,7 @@ func (r *room) render() string {
 	return fmt.Sprintf("%c%c%c\n%c%c%c\n%c%c%c\n", args...)
 }
 
+// Randomize character assignment and first turn player.
 func (r *room) shuffle() {
 	// Randomize turn.
 	r.turn = rand.Int() % 2
@@ -169,6 +168,7 @@ func (r *room) shuffle() {
 	})
 }
 
+// Resetsthe state of the board.
 func (r *room) reset() {
 	r.board = [9]byte{}
 	r.turn = 0
